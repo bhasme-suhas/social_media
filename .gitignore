@@ -1,0 +1,5 @@
+social_private_env
+db.sqlite3
+*.pyc
+.env
+psql
