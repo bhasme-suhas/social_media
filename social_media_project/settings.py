@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "auths",
+    "media_app"
 ]
 
 MIDDLEWARE = [
@@ -85,9 +87,9 @@ WSGI_APPLICATION = "social_media_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get('DB_NAME'),
-        "USER": os.environ.get('DB_USER_NAME'),
-        "PASSWORD": os.environ.get('DB_PASSWORD'),
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER_NAME"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
         "HOST": "localhost",
         "PORT": "5432",
     }
