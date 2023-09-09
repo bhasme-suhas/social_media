@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from auths.models import User
 from django.contrib.auth.models import auth
 from media_app.models import Profile
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def sign_up_view(request):
@@ -45,7 +46,8 @@ def sign_in_view(request):
         Profile.objects.get_or_create(user = user)
         auth.login(request,user)
         return redirect("index")
-
+    
+@login_required(login_url='sign_in')
 def sign_out_view(request):
     auth.logout(request)
     return redirect("index")

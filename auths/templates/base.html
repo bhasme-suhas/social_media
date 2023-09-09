@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="ltr">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,24 +8,24 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-PRrgQVJ8NNHGieOA1grGdCTIt4h21CzJs6SnWH4YMQ6G5F5+IEzOHz67L4SQaF0o" crossorigin="anonymous">
 
-    <title>Sastagram</title>
+    <title>Offstagram</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" style = "position:relative; right:1250px; top:2px;" href="/">Sastagram</a>
+    <a class="navbar-brand" style = "position:relative; top:2px;" href="/">Offstagram</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     {% if request.user.is_authenticated %}
         <p> Hello, {{request.user.username}}</p>
-        <a style="margin-left: 1rem;" class="btn btn-outline-dark" href="/sign_out">Sign out</a>
+          
+        <a style="margin-right: 1rem;" class="btn btn-outline-dark"  href="/sign_out">Sign out</a>
     {% else %}
 
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style = "justify-content flex-end;">
-      <a class="btn btn-dark" href = '/sign_up'>Sign_up</a>
-      <a class="btn btn-primary" style ="margin-right: 1rem;" href = '/sign_in'>Sign_in</a>
+      <a class="btn btn-dark" style ="margin-left: 2rem;" href = '/sign_up'>Sign_up</a>
+      <a class="btn btn-primary" style ="margin-left: 1rem;" href = '/sign_in'>Login</a>
     </div>
     {% endif %}
   </div>
@@ -40,7 +40,7 @@
 
     <nav class="navbar fixed-bottom bg-body-tertiary">
   <div class="container-fluid" style = "justify-content: center;">
-    Copyrights @ Sastagram
+    Copyrights @ Offstagram
   </div>
 </nav>
     <!-- Option 1: Bootstrap Bundle with Popper -->
