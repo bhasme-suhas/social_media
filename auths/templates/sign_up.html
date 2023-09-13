@@ -2,7 +2,7 @@
 {% block content %}
  {% if request.user.is_authenticated %}
     <div class="alert alert-warning" role="alert">
-        Hey, Welcome bro!! Don't waste your time on instagram Use Sastagram
+       Welcome!!
     </div>
     {% else %}
     <form style= 'margin: 0 auto; width: 40%;' method="POST" action="{% url 'sign_up' %}" autocomplete = "off">

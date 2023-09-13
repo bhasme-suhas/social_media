@@ -13,17 +13,20 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
+    
     <a class="navbar-brand" style = "position:relative; top:2px;" href="/">Offstagram</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     {% if request.user.is_authenticated %}
-        <p> Hello, {{request.user.username}}</p>
-          
-        <a style="margin-right: 1rem;" class="btn btn-outline-dark"  href="/sign_out">Sign out</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style = "justify-content: right;">
+        <a> Hello, {{request.user.username}}</a>
+        <a class="btn btn-success" style ="margin-left: 1rem;" href="/profile1/{{request.user.username}}">Profile</a> 
+        <a class="btn btn-primary" style ="margin-left: 1rem;" href="/sign_out">Sign out</a> 
+        </div>
     {% else %}
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style = "justify-content flex-end;">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style = "justify-content: right;">
       <a class="btn btn-dark" style ="margin-left: 2rem;" href = '/sign_up'>Sign_up</a>
       <a class="btn btn-primary" style ="margin-left: 1rem;" href = '/sign_in'>Login</a>
     </div>
@@ -39,7 +42,7 @@
 
 
     <nav class="navbar fixed-bottom bg-body-tertiary">
-  <div class="container-fluid" style = "justify-content: center;">
+  <div class="container-fluid" style = "justify-content: right;">
     Copyrights @ Offstagram
   </div>
 </nav>

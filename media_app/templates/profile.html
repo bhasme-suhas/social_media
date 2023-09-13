@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--div style = "display: flex; flex-direction: row; justify-content: centre;"-->
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    {% if profile_user.profile.image and profile_user.profile.image.url %}
+    <img src={{profile_user.profile.image.url}} style="border-radius: 70%; height: 15rem; width: 15rem; object-fit: cover;"/>
+    {% endif %}
+    {% if request.user.username == profile_user.username %}
+      <form method="POST" enctype="multipart/form-data" action="{% url 'upload_image' %}">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="file" class="form-control" name="profile_image" aria-label="Upload" accept=".jpeg, .jpg, .png" required />
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: center; margin-top: 1rem;">
+            {% if profile_user.profile.image and profile_user.profile.image.url %}
+                <button type="submit" class="btn btn-dark">Update Profile Image</button>
+                {% else %}
+                <button type="submit" class="btn btn-dark">Upload Profile Image</button>
+
+        {% endif %}
+        </div>
+        </form>
+        {% endif %}
+
+    <h3>Profile Page - {{profile_user.username}}<h3>
+        <h6>{{profile_user.email}}<h6>
+        <h6>Like made - {{likes_made}}<h6>
+        <h6>posts made - {{posts_made}}<h6>
+        <h6>Likes received - {{likes_received}}<h6>
+           <!--ul>
+          {% for top_post in top_posts %}
+          <li>{{top_post.caption}}</li>
+          {% endfor %}
+          </!--ul-->
+    </div>
+{% endblock %}
+    

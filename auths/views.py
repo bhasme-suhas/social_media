@@ -1,9 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from auths.models import User
+from .models import User
+#from media_app.models import LikePost
 from django.contrib.auth.models import auth
 from media_app.models import Profile
 from django.contrib.auth.decorators import login_required
+from media_app.views import profile_view
+
 # Create your views here.
 
 def sign_up_view(request):
@@ -51,3 +54,12 @@ def sign_in_view(request):
 def sign_out_view(request):
     auth.logout(request)
     return redirect("index")
+
+    
+@login_required(login_url='sign_in')
+def profile_view1(request,username): 
+    return profile_view(request,username)
+
+
+
+
