@@ -20,10 +20,13 @@
     </button>
     {% if request.user.is_authenticated %}
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style = "justify-content: right;">
+          
         <a> Hello, {{request.user.username}}</a>
         <a class="btn btn-success" style ="margin-left: 1rem;" href="/profile1/{{request.user.username}}">Profile</a> 
         <a class="btn btn-primary" style ="margin-left: 1rem;" href="/sign_out">Sign out</a> 
+         
         </div>
+         
     {% else %}
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style = "justify-content: right;">

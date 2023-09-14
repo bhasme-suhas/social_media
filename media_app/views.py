@@ -10,22 +10,16 @@ def get_data(request, key):
     return request.GET.get(key) or request.POST.get(key)
 
 def index_view(request):
-    page_name = 'index.html'
-    user = request.user
-    data ={
-        "already_liked_post_ids" : list(set(LikePost.objects.filter(user=user).values_list('post_id', flat=True))),
-        "posts" : Post.objects.all().order_by('-created_at')
-        }
-    return render(request, page_name,context = data)
-                
-        
-    # user = request.user
-    # if user.is_authenticated:
-    #     data = {
-    #         "already_liked_post_ids" : list(set(LikePost.objects.filter(user=user).values_list('post_id', flat=True))),
-    #         "posts" : Post.objects.all().order_by('-created_at')
-    #         }
-    # return render(request,page_name,context=data)
+    if request.user.is_authenticated:
+        page_name = 'index.html'
+        user = request.user
+        data ={
+            "already_liked_post_ids" : list(set(LikePost.objects.filter(user=user).values_list('post_id', flat=True))),
+            "posts" : Post.objects.all().order_by('-created_at')
+            }
+        return render(request, page_name,context = data)
+    else:
+        return render(request,"index.html")
 
 @login_required(login_url='sign_in')
 def submit_post(request):
@@ -46,7 +40,7 @@ def like_post(request):
     post_id = get_data(request,'post_id')
     #post_id = request.POST['post_id']
     LikePost.objects.create(
-        user_id = user.id,
+        user_id=user.id,
         post_id = post_id
     )
     return redirect('index')
